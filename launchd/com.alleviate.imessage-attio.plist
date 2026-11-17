@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.alleviate.imessage-attio</string>
+
+    <!-- The wrapper is the binary that must hold Full Disk Access. -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>__REPO__/run.sh</string>
+    </array>
+
+    <!-- Run on login/load and every 5 minutes while the machine is awake.
+         A closed lid means delayed, not lost: chat.db is cumulative and the
+         next run backfills everything since the watermark. -->
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StartInterval</key>
+    <integer>300</integer>
+
+    <key>WorkingDirectory</key>
+    <string>__REPO__</string>
+
+    <key>StandardOutPath</key>
+    <string>__HOME__/.imessage-attio/sync.log</string>
+    <key>StandardErrorPath</key>
+    <string>__HOME__/.imessage-attio/sync.err.log</string>
+</dict>
+</plist>
